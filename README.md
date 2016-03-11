@@ -40,7 +40,8 @@ autoredis是一个数据库操作的帮助类，简单的描述就是，它能�
 
 > 使用示范
 
-1. 普通查询
+普通查询
+
 ```javascript
 var db = require('autoredis').mysql;
 
@@ -59,7 +60,9 @@ db.query(sql, param, cacheKey)
 		
 	})
 ```
-2. 事务查询
+
+事务查询
+
 ```javascript
 var db = require('autoredis').mysql;
 
@@ -85,7 +88,7 @@ db.transaction(sql_list, paras, function(rows, err) {
 
 > 使用示范
 
-1. 设置缓存
+设置缓存
 ```javascript
 var cache = require('autoredis').cache;
 
@@ -99,7 +102,7 @@ cache.set('key', 'value', 300, function(err, result){
 	//result有值就是正确，为null就是失败
 })
 ```
-2. 获取缓存
+获取缓存
 ```javascript
 var cache = require('autoredis').cache;
 
@@ -117,11 +120,11 @@ cache.get('key')
 
 > 使用示范
 
-1. 添加引用
+添加引用
 ```javascript
 var mongo = require('autoredis').mongo;
 ```
-2. 获取集合并进行增删改查
+获取集合并进行增删改查
 ```javascript
 mongo.collections('media')
 	.then(function(list) {
@@ -141,14 +144,14 @@ mongo.collections('media')
 		console.error(err)
 	})
 ```
-3. 创建索引
+创建索引
 ```javascript
 mongo.ensureIndex('media', { price: 1 })
 	.then(function(r) {
 		console.log(r)
 	})
 ```
-4. 原子操作，查找并且更新
+原子操作，查找并且更新
 ```javascript
 mongo.findOneAndUpdate(
 		'media', 
@@ -168,7 +171,7 @@ mongo.findOneAndUpdate(
 		console.error(err)
 	})
 ```
-5. 创建表关联(DBRef类型)
+创建表关联(DBRef类型)
 ```javascript
 mongo.collections("parent")
 	.then(function(db) {
