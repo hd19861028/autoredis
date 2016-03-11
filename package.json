@@ -1,0 +1,28 @@
+{
+	"name": "autoredis",
+	"version": "1.0.0",
+	"description": "After you get the data from mysql, these data will automatically put them into the redis",
+	"repository": {
+		"url": "https://github.com/hd19861028/auturedis.git"
+	},
+	"main": "index.js",
+	"author": {
+		"email": "282642547@qq.com",
+		"name": "Mars Hu"
+	},
+	"keywords": [
+		"autoredis"
+	],
+	"dependencies": {
+		"mysql": "2.10.0",
+		"q": "1.4.1",
+		"mongodb": "2.1.7",
+		"thunk-redis": "1.5.2"
+	},
+	"engines": {
+		"node": ">=5.1.1",
+		"node-gyp": ">=3.0.3",
+		"npm": ">=3.3.12"
+	},
+	"license": "HuJindi"
+}

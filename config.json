@@ -1,0 +1,34 @@
+{
+	"cache": {
+		"enable": true,
+		"expire": 300,
+		"db_count": 5,
+		"options": {
+			"usePromise": true
+		},
+		"nodes": [
+			{
+				"port": "6789",
+				"host": "172.16.3.190"
+			}
+		]
+	},
+	"db": {
+		"host": "172.16.13.170",
+		"user": "root",
+		"password": "123456",
+		"database": "mtt_dev",
+		"port": 3306,
+		"connectTimeout": 2000,
+		"connectionLimit": 100,
+		"multipleStatements": true,
+		"timeout": 3000
+	},
+	"mongo": {
+		"host": "172.16.3.190",
+		"user": "test",
+		"password": "123",
+		"database": "test",
+		"port": 22222
+	}
+}
