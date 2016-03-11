@@ -204,3 +204,43 @@ mongo.collections("child")
 		})
 	})
 ```
+Map-Reduce操作
+```javascript
+mongo
+	.collections("testgroup")
+	.then(function(db) {
+		var map = function() {
+			var value = {
+				num: this.num,
+				count: 1
+			};
+			emit(this.name, value)
+		};
+		var reduce = function(name, val) {
+			reduceValue = {
+				num: 0,
+				count: 0
+			};
+			for (var i = 0; i < val.length; i++) {
+				reduceValue.num += val[i].num;
+				reduceValue.count += val[i].count;
+			}
+			return reduceValue;
+		};
+		var finalize = function(key, value) {
+			value.avg = parseInt(value.num / value.count);
+			return value;
+		};
+		var options = {
+			query: { num: { $gt: 500 } },
+			out: { inline: 1 },
+			verbose: true,
+			finalize: finalize
+		};
+		var callback = function(err, result, timeResult) {
+			console.log(result)
+			console.log(timeResult);
+		}
+		db.mapReduce(map, reduce, options, callback)
+	})
+```
