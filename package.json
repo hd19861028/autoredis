@@ -1,6 +1,6 @@
 {
 	"name": "autoredis",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "After you get the data from mysql, these data will automatically put them into the redis",
 	"repository": {
 		"url": "https://github.com/hd19861028/auturedis.git"
