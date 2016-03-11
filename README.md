@@ -99,7 +99,6 @@ cache.set('key', 'value', 300, function(err, result){
 	//result有值就是正确，为null就是失败
 })
 ```
-
 2. 获取缓存
 ```javascript
 var cache = require('autoredis').cache;
@@ -111,5 +110,94 @@ cache.get('key')
 		//err === "1" 表示不存在
 		//err === "0" 表示配置文件中，cache节点的enable属性设置成了false，缓存未启动
 		//err返回了一个错误对象，表示拿缓存的过程中，有某个步骤执行异常
+	})
+```
+
+<h3>mongo</h3>
+
+> 使用示范
+
+1. 添加引用
+```javascript
+var mongo = require('autoredis').mongo;
+```
+2. 获取集合并进行增删改查
+```javascript
+mongo.collections('media')
+	.then(function(list) {
+		list.insert({type:'manga', title: 'one piece', volumes: 612, read:521})
+		list.update({title: 'one piece'}, {$inc: {read:4}})
+		list.update({title: 'one piece'}, {$set: {genre:'sci-fi'}})
+		list.update({title: 'one piece'}, {$push: {author:{$each: ['griffin,peter', 'griffin,brian']}}})
+		list.update({title: 'one piece'}, {$push: {author:{$each: ['griffin,meg', 'griffin,louis'], $slice: -2}}})
+		list.update({title: 'one piece'}, {$addToSet: {author:{$each: ['griffin,peter', 'griffin,brian']}}})
+		list.update({title: 'one piece'}, {$pop: {author:1}})
+		list.update({title: 'one piece'}, {$pull: {author:'griffin,peter'}})
+		list.update({title: 'one piece'}, {$pullAll: {author:['griffin,louis']}})
+		
+		list.find({title: 'one piece'}).toArray(function(err, r){console.log(r);})
+	})
+	.catch(function(err) {
+		console.error(err)
+	})
+```
+3. 创建索引
+```javascript
+mongo.ensureIndex('media', { price: 1 })
+	.then(function(r) {
+		console.log(r)
+	})
+```
+4. 原子操作，查找并且更新
+```javascript
+mongo.findOneAndUpdate(
+		'media', 
+		{ title: 'one piece' }, 
+		{ genre: 'sci-fi4' },
+		{
+			sort: { title: -1 }, 
+			returnOriginal: false,
+			upsert: false,
+			maxTimeMS: 100
+		})
+	.then(function(result) {
+		console.log('findOneAndUpdate')
+		console.log(result)
+	})
+	.catch(function(err) {
+		console.error(err)
+	})
+```
+5. 创建表关联(DBRef类型)
+```javascript
+mongo.collections("parent")
+	.then(function(db) {
+		db.save({
+			title: 'parent'
+		}).then(function(r) {
+			console.log(r.ops._id)
+		})
+	})
+
+mongo.collections("child")
+	.then(function(db) {
+		//创建关联
+		db.save({
+			title: 'child2',
+			ref: mongo.newDBRef('parent', '56ca863a5e33ae1046cd931c')
+		}).then(function(r) {
+			console.log(r.ops)
+		})
+		
+		//按关联条件提取数据
+		db.find({
+			title: 'child'
+		}).toArray(function(err, r) {
+			var l = r[0].ref;
+
+			l.fetch().then(function(result) {
+				console.log(result)
+			})
+		})
 	})
 ```
