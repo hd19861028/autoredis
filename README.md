@@ -81,3 +81,21 @@ db.transaction(sql_list, paras, function(rows, err) {
 });
 ```
 
+<h3>redis</h3>
+
+> 使用示范
+
+1. 设置缓存
+```javascript
+var cache = require('autoredis').cache;
+
+//简单设置
+cache.set('key', 'value')
+//设置超时时间(单位：秒)
+//超时时间设置0为删除缓存，设置-1为永不过期
+cache.set('key', 'value', 300)
+//利用回调
+cache.set('key', 'value', 300, function(err, result){
+	//result有值就是正确，为null就是失败
+})
+```
