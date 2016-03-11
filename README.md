@@ -99,3 +99,17 @@ cache.set('key', 'value', 300, function(err, result){
 	//result有值就是正确，为null就是失败
 })
 ```
+
+2. 获取缓存
+```javascript
+var cache = require('autoredis').cache;
+
+cache.get('key')
+	.then(function(v){
+		//不用再次判断，进入这里表示一定是拿到缓存了
+	}, function(err){
+		//err === "1" 表示不存在
+		//err === "0" 表示配置文件中，cache节点的enable属性设置成了false，缓存未启动
+		//err返回了一个错误对象，表示拿缓存的过程中，有某个步骤执行异常
+	})
+```
