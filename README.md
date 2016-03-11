@@ -2,6 +2,10 @@
 
 autoredis是一个数据库操作的帮助类，简单的描述就是，它能将mysql的查询结果自动存入redis集群之中，在缓存过期以前都不会再次从mysql中读取
 
+安装方式
+
+npm install auturedis
+
 <h3>配置</h3>
 
 > 请按照下面的步骤正确的配置你的参数
