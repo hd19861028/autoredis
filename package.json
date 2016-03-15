@@ -24,5 +24,5 @@
 		"node-gyp": ">=3.0.3",
 		"npm": ">=3.3.12"
 	},
-	"license": "HuJindi"
+	"license": "MIT"
 }
