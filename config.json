@@ -2,7 +2,6 @@
 	"cache": {
 		"enable": true,
 		"expire": 300,
-		"db_count": 5,
 		"options": {
 			"usePromise": true
 		},
