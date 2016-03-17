@@ -1,3 +1,6 @@
+# 1.2.0
+- [修复] mysql添加master-slave操作
+
 # 1.1.0
 - [修复] redis缓存key添加hash算法
 

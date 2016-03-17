@@ -13,15 +13,39 @@
 		]
 	},
 	"db": {
-		"host": "172.16.13.170",
-		"user": "root",
-		"password": "123456",
-		"database": "mtt_dev",
-		"port": 3306,
-		"connectTimeout": 2000,
-		"connectionLimit": 100,
-		"multipleStatements": true,
-		"timeout": 3000
+		"master": {
+			"host": "172.16.13.170",
+			"user": "root",
+			"password": "123456",
+			"database": "mtt_dev",
+			"port": 3306,
+			"connectTimeout": 2000,
+			"connectionLimit": 100,
+			"multipleStatements": true,
+			"timeout": 3000
+		},
+		"slave1": {
+			"host": "172.16.13.170",
+			"user": "root",
+			"password": "123456",
+			"database": "mtt_dev",
+			"port": 3306,
+			"connectTimeout": 2000,
+			"connectionLimit": 100,
+			"multipleStatements": true,
+			"timeout": 3000
+		},
+		"slave2": {
+			"host": "172.16.13.170",
+			"user": "root",
+			"password": "123456",
+			"database": "mtt_dev",
+			"port": 3306,
+			"connectTimeout": 2000,
+			"connectionLimit": 100,
+			"multipleStatements": true,
+			"timeout": 3000
+		}
 	},
 	"mongo": {
 		"host": "172.16.3.190",
