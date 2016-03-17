@@ -17,14 +17,12 @@ npm install autoredis
 ```javascript
       global.config={
           db:{
-            ...
+            master:{...},
+            slave1:{...},
+            slave2:{...}
           },
-          cache:{
-            ...
-          },
-          mongo:{
-            ...
-          }
+          cache:{...},
+          mongo:{...}
       }
 ```
 
