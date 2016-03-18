@@ -1,3 +1,6 @@
+# 1.2.1
+- [修复] mysql优化cache key生成代码
+
 # 1.2.0
 - [修复] mysql添加master-slave操作
 
