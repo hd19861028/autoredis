@@ -1,7 +1,7 @@
 {
 	"name": "autoredis",
-	"version": "1.2.6",
-	"description": "After you get the data from mysql, these data will automatically put them into the redis",
+	"version": "1.3.2",
+	"description": "database operate helper. support mysql, redis, mongo",
 	"repository": {
 		"url": "https://github.com/hd19861028/autoredis.git"
 	},
@@ -17,8 +17,7 @@
 		"mysql": "2.10.0",
 		"q": "1.4.1",
 		"mongodb": "2.1.7",
-		"thunk-redis": "1.5.2",
-		"bling-hashes": "^1.1.1"
+		"thunk-redis": "1.5.2"
 	},
 	"engines": {
 		"node": ">=5.1.1",
