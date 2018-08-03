@@ -1,6 +1,6 @@
 {
 	"name": "autoredis",
-	"version": "1.3.16",
+	"version": "1.3.18",
 	"description": "database operate helper. support mysql, redis, mongo",
 	"repository": {
 		"url": "https://github.com/hd19861028/autoredis.git"
